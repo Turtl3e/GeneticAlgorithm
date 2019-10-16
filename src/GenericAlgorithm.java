@@ -15,11 +15,13 @@ public class GenericAlgorithm {
     public static void main(String[] args) throws IOException{
         distances=getArrayFromFileLines(pathToFile);
         int [] citiesIndex=getArrayWithIndexs(numberOfCities);
-        int [][] population=getPopulationWithNumberOfSpecimensAndTheirLength(citiesIndex,5,3);
+        int [][] population=getPopulationWithNumberOfSpecimensAndTheirLength(citiesIndex,5,numberOfCities);
         printTwoDimensionalArray(distances);
         printTwoDimensionalArray(population);
         int [] popultionSpecimensScores=getScoreOfPopulationSpecimens(population);
+
         printOneDimensionalArray(popultionSpecimensScores);
+
 
     }
 
@@ -64,14 +66,18 @@ public class GenericAlgorithm {
         int []scores=new int[population.length];
 
         for (int i = 0; i <population.length ; i++) {
-            int score=0;
-            for (int j = 0; j <population[i].length-1 ; j++) {
-                score+=getDistanceBeetwenCities(population[i][j],population[i][j+1]);
-            }
-            score+=getDistanceBeetwenCities(population[i][population[i].length-1],population[i][0]);
-            scores[i]=score;
+            scores[i]=getScoreOfSpecimen(population[i]);
         }
         return scores;
+    }
+
+    private static int getScoreOfSpecimen(int [] specimen){
+        int score=0;
+        for (int i = 0; i <specimen.length-1 ; i++) {
+            score+=getDistanceBeetwenCities(specimen[i],specimen[i+1]);
+        }
+        score+=getDistanceBeetwenCities(specimen[specimen.length-1],specimen[0]);
+        return score;
     }
 
     private static int getDistanceBeetwenCities(int cities1, int cities2){
@@ -97,6 +103,22 @@ public class GenericAlgorithm {
         List<Integer>list =Arrays.stream(array).boxed().collect(Collectors.toList());
         Collections.shuffle(list);
         return list.stream().mapToInt(i->i).toArray();
+    }*/
+
+    //Older code
+    
+    /*private static int[] getScoreOfPopulationSpecimens(int [][] population){
+        int []scores=new int[population.length];
+
+        for (int i = 0; i <population.length ; i++) {
+            int score=0;
+            for (int j = 0; j <population[i].length-1 ; j++) {
+                score+=getDistanceBeetwenCities(population[i][j],population[i][j+1]);
+            }
+            score+=getDistanceBeetwenCities(population[i][population[i].length-1],population[i][0]);
+            scores[i]=score;
+        }
+        return scores;
     }*/
 }
 
