@@ -49,4 +49,8 @@ public class Population {
     public Specimen getSpecimen(int index){
         return this.specimens.get(index);
     }
+
+    public ArrayList<Specimen> getSpecimens() {
+        return specimens;
+    }
 }

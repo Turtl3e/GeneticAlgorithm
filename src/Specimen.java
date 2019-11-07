@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 public class Specimen {
 
-    int [] specimenBody;
-    int specimenScore;
+    private int [] specimenBody;
+    private int specimenScore;
 
     public Specimen(int length,int [] array){
         specimenBody=new int [length];
@@ -24,6 +24,7 @@ public class Specimen {
 
     private void setSpecimenBody(int[] array) {
         //TODO: Maybe add flag if suffle or not.
+        //TODO: Create other shuffle method?
         List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
         Collections.shuffle(list);
         this.specimenBody=Arrays.copyOfRange(list.stream().mapToInt(i->i).toArray(),0,this.specimenBody.length);

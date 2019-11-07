@@ -12,14 +12,16 @@ public class GeneticAlgorithm {
     static int [] citiesIndex;
 
     public static void main(String[] args) throws IOException{
+        //TODO: Exclude Cities/Distances class?
         distances=getArrayFromFileLines(pathToFile);
         citiesIndex=getArrayWithCitiesIndexs(numberOfCities);
 
 
-        Population population=new Population(numberOfCities,numberOfCities);
+        Population population=new Population(3,3);
         fillPopulation(population);
-        int [] scores=population.getScoreOfPopulationSpecimens();
-        printOneDimensionalArray(scores);
+        Roulette roulette=new Roulette();
+        roulette.loadPopulation(population);
+        roulette.getAllWinnerSpecimens();
     }
 
     private static int[][] getArrayFromFileLines(String path) throws IOException {
@@ -57,21 +59,5 @@ public class GeneticAlgorithm {
         }
         return array;
     }
-
-    //Helpers
-    private static void printTwoDimensionalArray(int [][] arrayToPrint){
-        for (int i = 0; i <arrayToPrint.length ; i++) {
-            for (int j = 0; j <arrayToPrint[i].length ; j++) {
-                System.out.print(arrayToPrint[i][j] +"  ");
-            }
-            System.out.println();
-        }
-    }
-    private static void printOneDimensionalArray(int[] arrayToPrint){
-        for (int i = 0; i <arrayToPrint.length ; i++) {
-                System.out.print(arrayToPrint[i] +" ");
-        }
-    }
-
 }
 
