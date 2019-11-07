@@ -13,20 +13,24 @@ public class GeneticAlgorithm {
 
     public static void main(String[] args) throws IOException{
         //TODO: Exclude Cities/Distances class?
-        distances=getArrayFromFileLines(pathToFile);
+        distances=getDistancesArray(getArrayFromFileLines(pathToFile));
         citiesIndex=getArrayWithCitiesIndexs(numberOfCities);
 
 
-        Population population=new Population(3,3);
+        Population population=new Population(numberOfCities,numberOfCities);
         fillPopulation(population);
         Roulette roulette=new Roulette();
         roulette.loadPopulation(population);
         roulette.getAllWinnerSpecimens();
     }
 
-    private static int[][] getArrayFromFileLines(String path) throws IOException {
+    private static List<String> getArrayFromFileLines(String path) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get(path));
         numberOfCities=Integer.parseInt(lines.remove(0));
+        return lines;
+    }
+
+    private static int [][] getDistancesArray(List<String>lines){
         int [][] distances=new int[numberOfCities][numberOfCities];
 
         for (int i = 0; i <lines.size() ; i++) {
@@ -38,7 +42,6 @@ public class GeneticAlgorithm {
         }
         return distances;
     }
-
 
     private static void fillPopulation(Population population){
         for (int i = 0; i <population.getPopulationLength() ; i++) {
