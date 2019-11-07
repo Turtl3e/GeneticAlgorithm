@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GenericAlgorithm {
+public class GeneticAlgorithm {
 
     static String pathToFile= "src/berlin52.txt";
     static int numberOfCities;
@@ -21,8 +21,6 @@ public class GenericAlgorithm {
         int [] popultionSpecimensScores=getScoreOfPopulationSpecimens(population);
 
         printOneDimensionalArray(popultionSpecimensScores);
-
-
     }
 
     private static int[][] getArrayFromFileLines(String path) throws IOException {
@@ -105,8 +103,8 @@ public class GenericAlgorithm {
         return list.stream().mapToInt(i->i).toArray();
     }*/
 
-    //Older code
-    
+    //###############################Older code
+
     /*private static int[] getScoreOfPopulationSpecimens(int [][] population){
         int []scores=new int[population.length];
 
