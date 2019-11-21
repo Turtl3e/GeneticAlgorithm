@@ -46,13 +46,13 @@ public class Tournament {
 
         for (int i = 0; i <oldPopulation.getPopulationLength() ; i++) {
             ArrayList<Specimen> specimens= drawSpecimensForTournamentsWithPressure();
-            population.add(getWinnerOfTournament(specimens));
+            population.add(findTheBestSpecimen(specimens));
         }
         return population;
     }
 
-    private Specimen getWinnerOfTournament(ArrayList<Specimen> specimens){
-        Specimen winner= Collections.max(specimens,Comparator.comparing(specimen->specimen.getSpecimenScore()));
+    public static Specimen findTheBestSpecimen(ArrayList<Specimen> specimens){
+        Specimen winner= Collections.min(specimens,Comparator.comparing(specimen->specimen.getSpecimenScore()));
         return winner;
     }
 }

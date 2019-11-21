@@ -1,5 +1,6 @@
 package algorithm;
 
+import myUtils.Utils;
 import selections.Roulette;
 import selections.Tournament;
 
@@ -24,22 +25,24 @@ public class GeneticAlgorithm {
         Roulette roulette=new Roulette();
         Tournament tournament=new Tournament();
 
-        Population population=new Population(10,10);
+        Population population=new Population(numberOfCities,numberOfCities);
         fillPopulation(population);
 
-        roulette.loadPopulation(population);
-        tournament.loadPopulation(population);
 
-        population.print();
-        /*for (int i = 0; i <5 ; i++) {
-            population.setSpecimens(roulette.getAllWinnerSpecimens());
-            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            population.print();
-            System.out.println("SCORE");
+        for (int i = 0; i <5 ; i++) {
+            population.setTheBestSpecimen(Tournament.findTheBestSpecimen(population.getSpecimens()));
+            System.out.println("########BEST SPECIMEN#########   " +population.getTheBestSpecimen().getSpecimenScore());
+            Utils.printOneDimensionalArray(population.getTheBestSpecimen().getSpecimenBody());
+            System.out.println("########Population scores#########   ");
             Utils.printOneDimensionalArray(population.getScoreOfPopulationSpecimens());
-        }*/
-        population.setSpecimens(tournament.getNewPopulationByTournaments());
-        population.print();
+            System.out.println("#################   ");
+            roulette.loadPopulation(population);
+            tournament.loadPopulation(population);
+
+            population.print();
+            population.setSpecimens(roulette.getAllWinnerSpecimens());
+            population.setSpecimens(tournament.getNewPopulationByTournaments());
+        }
     }
 
     private static List<String> getArrayFromFileLines(String path) throws IOException {

@@ -11,6 +11,7 @@ public class Population {
     private int properSpecimenLength;
     private ArrayList<Specimen>specimens;
     private int [] specimensScores;
+    private Specimen theBestSpecimen;
 
     public Population(int maxLength, int specimensLength){
         this.specimens=new ArrayList<>();
@@ -25,6 +26,14 @@ public class Population {
             this.specimens.add(specimenToAdd);
             this.populationCurrentLength++;
         }
+    }
+
+    public Specimen getTheBestSpecimen() {
+        return theBestSpecimen;
+    }
+
+    public void setTheBestSpecimen(Specimen theBestSpecimen) {
+        this.theBestSpecimen = theBestSpecimen;
     }
 
     private boolean canAddSpecimen(){
