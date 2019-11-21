@@ -1,3 +1,6 @@
+package myUtils;
+
+import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 public class Utils {
@@ -16,6 +19,7 @@ public class Utils {
         }
         System.out.println();
     }
+
 
     public static int findMaxInArray(int [] arr){
         int max=0;

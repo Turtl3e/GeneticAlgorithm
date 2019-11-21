@@ -1,3 +1,9 @@
+package selections;
+
+import algorithm.Population;
+import algorithm.Specimen;
+import myUtils.Utils;
+
 import java.util.ArrayList;
 
 public class Roulette {
@@ -11,7 +17,7 @@ public class Roulette {
         this.oldPopulation=population;
         setMaxOldScore();
         this.scoresAfterMaxSubtraction=substractNumberFromEachElement(population.getScoreOfPopulationSpecimens(),maxOldScore);
-        this.sumScoresAfterMaxSubtraction=Utils.getSumElementsOfArray(scoresAfterMaxSubtraction);
+        this.sumScoresAfterMaxSubtraction= Utils.getSumElementsOfArray(scoresAfterMaxSubtraction);
     }
 
     private void setMaxOldScore() {
@@ -28,7 +34,7 @@ public class Roulette {
     }
 
     private Specimen spinTheSpecimensAndGetWinner(){
-        int random=Utils.getRandomNumberExclusive(sumScoresAfterMaxSubtraction);
+        int random= Utils.getRandomNumberExclusive(sumScoresAfterMaxSubtraction);
         int sum=0;
         Specimen specimenToReturn=null;
         for (int i = 0; i <scoresAfterMaxSubtraction.length ; i++) {

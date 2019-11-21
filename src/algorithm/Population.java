@@ -1,3 +1,7 @@
+package algorithm;
+
+import myUtils.Utils;
+
 import java.util.ArrayList;
 
 public class Population {
@@ -5,7 +9,7 @@ public class Population {
     private int populationLength;
     private int populationCurrentLength=0;
     private int properSpecimenLength;
-    private ArrayList<Specimen >specimens;
+    private ArrayList<Specimen>specimens;
     private int [] specimensScores;
 
     public Population(int maxLength, int specimensLength){
@@ -52,5 +56,13 @@ public class Population {
 
     public ArrayList<Specimen> getSpecimens() {
         return specimens;
+    }
+
+    public void setSpecimens(ArrayList<Specimen> specimens) {
+        this.specimens = specimens;
+    }
+
+    public void print(){
+        this.specimens.stream().forEach((specimen)->Utils.printOneDimensionalArray(specimen.getSpecimenBody()));
     }
 }

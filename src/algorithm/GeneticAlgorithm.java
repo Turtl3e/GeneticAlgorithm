@@ -1,3 +1,8 @@
+package algorithm;
+
+import selections.Roulette;
+import selections.Tournament;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,12 +21,25 @@ public class GeneticAlgorithm {
         distances=getDistancesArray(getArrayFromFileLines(pathToFile));
         citiesIndex=getArrayWithCitiesIndexs(numberOfCities);
 
-
-        Population population=new Population(numberOfCities,numberOfCities);
-        fillPopulation(population);
         Roulette roulette=new Roulette();
+        Tournament tournament=new Tournament();
+
+        Population population=new Population(10,10);
+        fillPopulation(population);
+
         roulette.loadPopulation(population);
-        roulette.getAllWinnerSpecimens();
+        tournament.loadPopulation(population);
+
+        population.print();
+        /*for (int i = 0; i <5 ; i++) {
+            population.setSpecimens(roulette.getAllWinnerSpecimens());
+            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            population.print();
+            System.out.println("SCORE");
+            Utils.printOneDimensionalArray(population.getScoreOfPopulationSpecimens());
+        }*/
+        population.setSpecimens(tournament.getNewPopulationByTournaments());
+        population.print();
     }
 
     private static List<String> getArrayFromFileLines(String path) throws IOException {
