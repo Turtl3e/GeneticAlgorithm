@@ -1,5 +1,6 @@
 package algorithm;
 
+import crucifixions.CrucifixionsController;
 import myUtils.Utils;
 import selections.Roulette;
 import selections.Tournament;
@@ -25,7 +26,7 @@ public class GeneticAlgorithm {
         Roulette roulette=new Roulette();
         Tournament tournament=new Tournament();
 
-        Population population=new Population(numberOfCities,numberOfCities);
+        Population population=new Population(10,10);
         fillPopulation(population);
 
 
@@ -42,6 +43,9 @@ public class GeneticAlgorithm {
             population.print();
             population.setSpecimens(roulette.getAllWinnerSpecimens());
             population.setSpecimens(tournament.getNewPopulationByTournaments());
+
+            CrucifixionsController crucifixionsController=new CrucifixionsController(population.getSpecimens());
+            crucifixionsController.getPair(1).crossByOX();
         }
     }
 

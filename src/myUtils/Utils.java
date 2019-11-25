@@ -39,5 +39,9 @@ public class Utils {
         return (int)(Math.random()*max);
     }
 
+    public static boolean isEven(int number){
+        return !(number%2>0);
+    }
+
 
 }
