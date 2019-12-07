@@ -6,25 +6,28 @@ import myUtils.Utils;
 
 import java.util.ArrayList;
 
-public class Roulette {
+public class Roulette implements Selection {
 
-    Population oldPopulation; //TODO: Use only specimens table.
     int maxOldScore;
     int [] scoresAfterMaxSubtraction;
     int sumScoresAfterMaxSubtraction;
 
-    public void loadPopulation(Population population){
-        this.oldPopulation=population;
-        setMaxOldScore();
+    @Override
+    public Population preparePopulation(Population population) {
+        setMaxOldPopulationScore(population);
         this.scoresAfterMaxSubtraction=substractNumberFromEachElement(population.getScoreOfPopulationSpecimens(),maxOldScore);
-        this.sumScoresAfterMaxSubtraction= Utils.getSumElementsOfArray(scoresAfterMaxSubtraction);
+        ArrayList<Specimen> newPopulation=new ArrayList<>();
+
+        for (int i = 0; i <population.getPopulationSize() ; i++) {
+            newPopulation.add(spinTheSpecimensAndGetWinner(population));
+        }
+        return new Population(newPopulation);
     }
 
-    private void setMaxOldScore() {
-        this.maxOldScore = Utils.findMaxInArray(oldPopulation.getScoreOfPopulationSpecimens());
+    private void setMaxOldPopulationScore(Population population) {
+        this.maxOldScore = Utils.findMaxInArray(population.getScoreOfPopulationSpecimens());
     }
 
-    //TODO: Wrong method name or method should be in Array class
     private int [] substractNumberFromEachElement(int [] array,int number){
         int [] arr=new int [array.length];
         for (int i = 0; i <arr.length ; i++) {
@@ -33,25 +36,17 @@ public class Roulette {
         return arr;
     }
 
-    private Specimen spinTheSpecimensAndGetWinner(){
+    private Specimen spinTheSpecimensAndGetWinner(Population population){
         int random= Utils.getRandomNumberExclusive(sumScoresAfterMaxSubtraction);
         int sum=0;
         Specimen specimenToReturn=null;
         for (int i = 0; i <scoresAfterMaxSubtraction.length ; i++) {
             sum+=scoresAfterMaxSubtraction[i];
             if(sum>random){
-                specimenToReturn=oldPopulation.getSpecimen(i);
+                specimenToReturn=population.getSpecimen(i);
                 break;
             }
         }
         return specimenToReturn;
-    }
-
-    public ArrayList<Specimen> getAllWinnerSpecimens(){
-        ArrayList<Specimen> specimens=new ArrayList<>();
-        for (int i = 0; i <oldPopulation.getPopulationLength() ; i++) {
-            specimens.add(spinTheSpecimensAndGetWinner());
-        }
-        return specimens;
     }
 }

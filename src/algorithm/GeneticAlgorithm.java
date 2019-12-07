@@ -1,6 +1,7 @@
 package algorithm;
 
-import crucifixions.CrucifixionsController;
+import crosses.Crosser;
+import mutators.Mutator;
 import myUtils.Utils;
 import selections.Roulette;
 import selections.Tournament;
@@ -8,6 +9,7 @@ import selections.Tournament;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,36 +19,42 @@ public class GeneticAlgorithm {
     static int numberOfCities;
     static int [][] distances;
     static int [] citiesIndex;
+    static Specimen theBestSpecimen;
 
     public static void main(String[] args) throws IOException{
-        //TODO: Exclude Cities/Distances class?
         distances=getDistancesArray(getArrayFromFileLines(pathToFile));
         citiesIndex=getArrayWithCitiesIndexs(numberOfCities);
 
+        Population population=new Population(prepareBasePopulation(numberOfCities,numberOfCities));
         Roulette roulette=new Roulette();
-        Tournament tournament=new Tournament();
+        Tournament tournament= new Tournament();
 
-        Population population=new Population(10,10);
-        fillPopulation(population);
+        theBestSpecimen=population.getTheBestSpecimen();
 
+        for (int i = 0; i <10000 ; i++) {
+//            System.out.println("Best"+population.getTheBestSpecimen().getSpecimenScore());
+//            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX BEFORE");
+//            population.print();
 
-        for (int i = 0; i <5 ; i++) {
-            population.setTheBestSpecimen(Tournament.findTheBestSpecimen(population.getSpecimens()));
-            System.out.println("########BEST SPECIMEN#########   " +population.getTheBestSpecimen().getSpecimenScore());
-            Utils.printOneDimensionalArray(population.getTheBestSpecimen().getSpecimenBody());
-            System.out.println("########Population scores#########   ");
-            Utils.printOneDimensionalArray(population.getScoreOfPopulationSpecimens());
-            System.out.println("#################   ");
-            roulette.loadPopulation(population);
-            tournament.loadPopulation(population);
+            var selected=tournament.preparePopulation(population);
+            population=selected;
+//            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX After selection");
+//            population.print();
 
-            population.print();
-            population.setSpecimens(roulette.getAllWinnerSpecimens());
-            population.setSpecimens(tournament.getNewPopulationByTournaments());
+            var crossedPop=Crosser.crossPopulationByOX(population);
+//            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX After cross");
+            population=crossedPop;
+//            population.print();
+//            Utils.printOneDimensionalArray(population.getTheBestSpecimen().getSpecimenBody());
+            Mutator.mutate(population,110);
 
-            CrucifixionsController crucifixionsController=new CrucifixionsController(population.getSpecimens());
-            crucifixionsController.getPair(1).crossByOX();
+            if(population.getTheBestSpecimen().getSpecimenScore()<theBestSpecimen.getSpecimenScore()){
+                theBestSpecimen=population.getTheBestSpecimen();
+                System.out.println(theBestSpecimen.getSpecimenScore());
+            }
+
         }
+        Utils.printOneDimensionalArray(theBestSpecimen.getSpecimenBody());
     }
 
     private static List<String> getArrayFromFileLines(String path) throws IOException {
@@ -68,14 +76,14 @@ public class GeneticAlgorithm {
         return distances;
     }
 
-    private static void fillPopulation(Population population){
-        for (int i = 0; i <population.getPopulationLength() ; i++) {
-            population.addSpecimen(new Specimen(population.getProperSpecimenLength(),citiesIndex));
+    private static ArrayList<Specimen> prepareBasePopulation(int populationLength, int specimensLegth){
+        ArrayList<Specimen> population=new ArrayList<>();
+        for (int i = 0; i <populationLength ; i++) {
+            population.add(new Specimen(specimensLegth,citiesIndex));
         }
+        return population;
     }
 
-    //static
-    //Exclude?
     public static int getDistanceBeetwenCities(int cities1, int cities2){
         return distances[cities1][cities2];
     }
