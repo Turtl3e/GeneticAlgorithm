@@ -1,6 +1,7 @@
 package algorithm;
 
 import crosses.Crosser;
+import crosses.PMX;
 import mutators.Mutator;
 import myUtils.Utils;
 import selections.Roulette;
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class GeneticAlgorithm {
 
+//    static String pathToFile= "src/pr1002.txt";
     static String pathToFile= "src/berlin52.txt";
     static int numberOfCities;
     static int [][] distances;
@@ -26,33 +28,20 @@ public class GeneticAlgorithm {
         citiesIndex=getArrayWithCitiesIndexs(numberOfCities);
 
         Population population=new Population(prepareBasePopulation(numberOfCities,numberOfCities));
-        Roulette roulette=new Roulette();
         Tournament tournament= new Tournament();
-
         theBestSpecimen=population.getTheBestSpecimen();
 
-        for (int i = 0; i <10000 ; i++) {
-//            System.out.println("Best"+population.getTheBestSpecimen().getSpecimenScore());
-//            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX BEFORE");
-//            population.print();
+        for (int i = 0; i <100000 ; i++) {
 
             var selected=tournament.preparePopulation(population);
-            population=selected;
-//            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX After selection");
-//            population.print();
-
-            var crossedPop=Crosser.crossPopulationByOX(population);
-//            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX After cross");
+            var crossedPop= Crosser.crossPopulationByOX(selected,920);
             population=crossedPop;
-//            population.print();
-//            Utils.printOneDimensionalArray(population.getTheBestSpecimen().getSpecimenBody());
-            Mutator.mutate(population,110);
+            Mutator.mutate(population,135); //115 //135
 
             if(population.getTheBestSpecimen().getSpecimenScore()<theBestSpecimen.getSpecimenScore()){
                 theBestSpecimen=population.getTheBestSpecimen();
-                System.out.println(theBestSpecimen.getSpecimenScore());
+                System.out.println("Iteracja:" +i +" "+theBestSpecimen.getSpecimenScore());
             }
-
         }
         Utils.printOneDimensionalArray(theBestSpecimen.getSpecimenBody());
     }

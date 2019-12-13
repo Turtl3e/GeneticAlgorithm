@@ -48,12 +48,27 @@ public class Utils {
     }
 
     public static int getRandomNumberExclusive(int max){
-        return (int)(Math.random()*max);
+        return (int)Math.floor(Math.random()*max);
+    }
+    public static int getRandomNumberExclusive(int min,int max){
+        return (int)Math.floor(Math.random() * (max - min) + min);
     }
 
-    public static boolean isEven(int number){
-        return !(number%2>0);
+    public static int [] shuffleArray(int [] array){
+
+        Random rand = new Random();
+
+        for (int i = 0; i < array.length; i++) {
+            int randomIndexToSwap = rand.nextInt(array.length);
+            int temp = array[randomIndexToSwap];
+            array[randomIndexToSwap] = array[i];
+            array[i] = temp;
+        }
+        return array;
+//        System.out.println(Arrays.toString(array));
     }
 
-
+    public static boolean arrayContains(int arr [], int value){
+        return Arrays.stream(arr).anyMatch(i -> value == i);
+    }
 }

@@ -2,26 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b1e960b-ba65-407c-a223-b99b8c64cf25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/crosses/Crosser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/META-INF/GeneticAlgorithm.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithm/META-INF/GeneticAlgorithm.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/algorithm/GeneticAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithm/algorithm/GeneticAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/algorithm/Population.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithm/algorithm/Population.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/algorithm/Specimen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithm/algorithm/Specimen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/crucifixions/CrucifixionsController$Pair.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/crucifixions/CrucifixionsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/crucifixions/OX.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/crucifixions/Pairer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/crosses/Crosser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithm/crosses/Crosser$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/crosses/Crosser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithm/crosses/Crosser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/myUtils/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithm/myUtils/Utils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/selections/Roulette.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithm/selections/Roulette.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithm/selections/Tournament.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithm/selections/Tournament.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithm/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Population.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/algorithm/Specimen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/Specimen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/crucifixions/CrucifixionsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/crucifixions/OX.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/crucifixions/Pairer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/crosses/Crosser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/crosses/Crosser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myUtils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myUtils/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/selections/Roulette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/selections/Roulette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/selections/Tournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/selections/Tournament.java" afterDir="false" />
@@ -57,7 +48,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/projects/javas_projects/EnglishMachine" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -122,7 +113,17 @@
       <workItem from="1574630021165" duration="320000" />
       <workItem from="1574680520861" duration="11350000" />
       <workItem from="1575667903356" duration="1130000" />
-      <workItem from="1575710160767" duration="24455000" />
+      <workItem from="1575710160767" duration="25714000" />
+      <workItem from="1575802663382" duration="1476000" />
+      <workItem from="1575809148558" duration="248000" />
+      <workItem from="1575825106374" duration="2004000" />
+      <workItem from="1575875296928" duration="5162000" />
+      <workItem from="1575882871520" duration="10639000" />
+      <workItem from="1575899407280" duration="88000" />
+      <workItem from="1575916914320" duration="4241000" />
+      <workItem from="1575974621360" duration="2537000" />
+      <workItem from="1576225664292" duration="12934000" />
+      <workItem from="1576239363610" duration="14000" />
     </task>
     <servers />
   </component>
@@ -134,54 +135,71 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1575725386721" />
+    <state x="803" y="416" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1575887771457">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="803" y="416" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1040@0.0.1920.1040" timestamp="1575887771457" />
     <state x="339" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1575712399629">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="339" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1575712399629" />
-    <state width="1877" height="452" key="GridCell.Tab.0.bottom" timestamp="1575736651207">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1575825151967">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1575825151967" />
+    <state width="1877" height="470" key="GridCell.Tab.0.bottom" timestamp="1576239080285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="266" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575730947318" />
-    <state width="1877" height="452" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1575736651207" />
-    <state width="1877" height="452" key="GridCell.Tab.0.center" timestamp="1575736651206">
+    <state width="1877" height="470" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576239080285" />
+    <state width="1877" height="470" key="GridCell.Tab.0.center" timestamp="1576239080285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="266" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575730947317" />
-    <state width="1877" height="452" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1575736651206" />
-    <state width="1877" height="452" key="GridCell.Tab.0.left" timestamp="1575736651206">
+    <state width="1877" height="470" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576239080285" />
+    <state width="1877" height="470" key="GridCell.Tab.0.left" timestamp="1576239080285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="266" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575730947317" />
-    <state width="1877" height="452" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1575736651206" />
-    <state width="1877" height="452" key="GridCell.Tab.0.right" timestamp="1575736651207">
+    <state width="1877" height="470" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576239080285" />
+    <state width="1877" height="470" key="GridCell.Tab.0.right" timestamp="1576239080285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="266" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575730947317" />
-    <state width="1877" height="452" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1575736651207" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1575719407884">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="470" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576239080285" />
+    <state width="1877" height="470" key="GridCell.Tab.1.bottom" timestamp="1576239080285">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575719407884" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1575719407884">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="470" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576239080285" />
+    <state width="1877" height="470" key="GridCell.Tab.1.center" timestamp="1576239080285">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1575719407884" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1575719407884">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="470" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576239080285" />
+    <state width="1877" height="470" key="GridCell.Tab.1.left" timestamp="1576239080285">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1575719407884" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1575719407884">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="470" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576239080285" />
+    <state width="1877" height="470" key="GridCell.Tab.1.right" timestamp="1576239080285">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1575719407884" />
+    <state width="1877" height="470" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576239080285" />
     <state x="277" y="54" key="SettingsEditor" timestamp="1575650696370">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1575650696370" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1575710161956">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="581" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1576239363474">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1575710161956" />
+    <state x="581" y="298" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576239363474" />
+    <state x="656" y="125" width="607" height="789" key="find.popup" timestamp="1575842461927">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="125" width="607" height="789" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1575842461927" />
   </component>
   <component name="masterDetails">
     <states>

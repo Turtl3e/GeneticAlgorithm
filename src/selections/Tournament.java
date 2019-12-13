@@ -10,7 +10,7 @@ import java.util.Comparator;
 
 public class Tournament implements Selection {
 
-    static double selectivePressure=0.085;
+    static double selectivePressure=0.09;
 
     @Override
     public Population preparePopulation(Population population) {

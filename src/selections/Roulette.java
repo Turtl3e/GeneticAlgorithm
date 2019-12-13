@@ -14,7 +14,7 @@ public class Roulette implements Selection {
 
     @Override
     public Population preparePopulation(Population population) {
-        setMaxOldPopulationScore(population);
+        setMaxOldPopulationScore(population.getScoreOfPopulationSpecimens());
         this.scoresAfterMaxSubtraction=substractNumberFromEachElement(population.getScoreOfPopulationSpecimens(),maxOldScore);
         ArrayList<Specimen> newPopulation=new ArrayList<>();
 
@@ -24,8 +24,8 @@ public class Roulette implements Selection {
         return new Population(newPopulation);
     }
 
-    private void setMaxOldPopulationScore(Population population) {
-        this.maxOldScore = Utils.findMaxInArray(population.getScoreOfPopulationSpecimens());
+    private void setMaxOldPopulationScore(int [] oldScores) {
+        this.maxOldScore = Utils.findMaxInArray(oldScores);
     }
 
     private int [] substractNumberFromEachElement(int [] array,int number){
@@ -39,14 +39,12 @@ public class Roulette implements Selection {
     private Specimen spinTheSpecimensAndGetWinner(Population population){
         int random= Utils.getRandomNumberExclusive(sumScoresAfterMaxSubtraction);
         int sum=0;
-        Specimen specimenToReturn=null;
         for (int i = 0; i <scoresAfterMaxSubtraction.length ; i++) {
             sum+=scoresAfterMaxSubtraction[i];
             if(sum>random){
-                specimenToReturn=population.getSpecimen(i);
-                break;
+                return population.getSpecimen(i);
             }
         }
-        return specimenToReturn;
+        return null;
     }
 }
