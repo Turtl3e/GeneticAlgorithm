@@ -16,7 +16,14 @@ public class Roulette implements Selection {
     public Population preparePopulation(Population population) {
         setMaxOldPopulationScore(population.getScoreOfPopulationSpecimens());
         this.scoresAfterMaxSubtraction=substractNumberFromEachElement(population.getScoreOfPopulationSpecimens(),maxOldScore);
+        this.sumScoresAfterMaxSubtraction= Utils.getSumElementsOfArray(scoresAfterMaxSubtraction);
+
         ArrayList<Specimen> newPopulation=new ArrayList<>();
+//        System.out.println("#####MAX SCORE "+maxOldScore+" SumScoresAfterMaxSub "+sumScoresAfterMaxSubtraction);
+//        System.out.println("Scores Population");
+//        Utils.printOneDimensionalArray(population.getScoreOfPopulationSpecimens());
+//        System.out.println("Scores After Sub");
+//        Utils.printOneDimensionalArray(scoresAfterMaxSubtraction);
 
         for (int i = 0; i <population.getPopulationSize() ; i++) {
             newPopulation.add(spinTheSpecimensAndGetWinner(population));
@@ -39,9 +46,12 @@ public class Roulette implements Selection {
     private Specimen spinTheSpecimensAndGetWinner(Population population){
         int random= Utils.getRandomNumberExclusive(sumScoresAfterMaxSubtraction);
         int sum=0;
+//        System.out.println("Wylosowany numer: "+random);
         for (int i = 0; i <scoresAfterMaxSubtraction.length ; i++) {
             sum+=scoresAfterMaxSubtraction[i];
             if(sum>random){
+//                System.out.println("Wylosowano i "+i +" suma jest " +sum);
+//                System.out.println("Wylosowany specimen score "+population.getSpecimen(i).getSpecimenScore());
                 return population.getSpecimen(i);
             }
         }

@@ -15,13 +15,6 @@ public class Utils {
         System.out.println(Arrays.toString(arrayToPrint));
     }
 
-    public static void printOneDimensionalArray(List<Integer> arrayToPrint){
-        for (int i = 0; i <arrayToPrint.size() ; i++) {
-            System.out.print(arrayToPrint.get(i) +" ");
-        }
-        System.out.println();
-    }
-
     public static int findMaxInArray(int [] arr){
         int max=0;
         for (int i = 0; i <arr.length ; i++) {
@@ -50,8 +43,13 @@ public class Utils {
     public static int getRandomNumberExclusive(int max){
         return (int)Math.floor(Math.random()*max);
     }
+
     public static int getRandomNumberExclusive(int min,int max){
         return (int)Math.floor(Math.random() * (max - min) + min);
+    }
+
+    public static int getRandomNumberInclusive(int min,int max){
+        return (int)Math.floor(Math.random() * (max - min+1) + min);
     }
 
     public static int [] shuffleArray(int [] array){
@@ -70,5 +68,13 @@ public class Utils {
 
     public static boolean arrayContains(int arr [], int value){
         return Arrays.stream(arr).anyMatch(i -> value == i);
+    }
+
+    public static void reverseArray(int [] array){
+        for(int i=0; i<array.length/2; i++){
+            int temp = array[i];
+            array[i] = array[array.length -i -1];
+            array[array.length -i -1] = temp;
+        }
     }
 }

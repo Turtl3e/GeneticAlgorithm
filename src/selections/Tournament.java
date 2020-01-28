@@ -10,7 +10,9 @@ import java.util.Comparator;
 
 public class Tournament implements Selection {
 
-    static double selectivePressure=0.09;
+    static double selectivePressure=0.03;
+    //TODO: This is not selective pressure?
+//    static double selectivePressure=0.09; //0.09 //1002-0.05
 
     @Override
     public Population preparePopulation(Population population) {
@@ -25,16 +27,14 @@ public class Tournament implements Selection {
         return new Population(newPopulation);
     }
 
-
     private ArrayList<Specimen> drawSpecimensForTournamentsWithPressure(ArrayList<Specimen> population){
         int specimensToDraw=(int)(population.size()*selectivePressure);
+//        System.out.println(specimensToDraw);
         ArrayList<Specimen> drawedSpecimens= new ArrayList<>();
 
         for (int i = 0; i <specimensToDraw ; i++) {
-            // TODO: GetRandomSpecimen to add();
             var drawedSpecimen=getRandomSpecimenFromPopulation(population);
             drawedSpecimens.add(drawedSpecimen);
-
         }
         return drawedSpecimens;
     }

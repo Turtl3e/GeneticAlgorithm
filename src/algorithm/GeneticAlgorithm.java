@@ -16,34 +16,39 @@ import java.util.List;
 
 public class GeneticAlgorithm {
 
-//    static String pathToFile= "src/pr1002.txt";
+//    static String pathToFile= "src/pr1002.txt";            //populacja 100, pmx 45%, mutacja 25%, tournament size 10
     static String pathToFile= "src/berlin52.txt";
     static int numberOfCities;
     static int [][] distances;
     static int [] citiesIndex;
     static Specimen theBestSpecimen;
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         distances=getDistancesArray(getArrayFromFileLines(pathToFile));
         citiesIndex=getArrayWithCitiesIndexs(numberOfCities);
 
-        Population population=new Population(prepareBasePopulation(numberOfCities,numberOfCities));
+        Population population=new Population(prepareBasePopulation(100,numberOfCities)); //1002-150
         Tournament tournament= new Tournament();
+        Roulette roulette=new Roulette();
         theBestSpecimen=population.getTheBestSpecimen();
 
         for (int i = 0; i <100000 ; i++) {
 
             var selected=tournament.preparePopulation(population);
-            var crossedPop= Crosser.crossPopulationByOX(selected,920);
-            population=crossedPop;
-            Mutator.mutate(population,135); //115 //135
+//            var selected=roulette.preparePopulation(population);
+            var crossedPop= Crosser.crossPopulation(selected,950, PMX.class); //920 berling // 1002-450
 
+            population=crossedPop;
+
+           // Mutator.mutate(population,135); //135 berlin
+            Mutator.mutateByInversion(population,500); //250-1002
             if(population.getTheBestSpecimen().getSpecimenScore()<theBestSpecimen.getSpecimenScore()){
                 theBestSpecimen=population.getTheBestSpecimen();
                 System.out.println("Iteracja:" +i +" "+theBestSpecimen.getSpecimenScore());
             }
         }
         Utils.printOneDimensionalArray(theBestSpecimen.getSpecimenBody());
+
     }
 
     private static List<String> getArrayFromFileLines(String path) throws IOException {

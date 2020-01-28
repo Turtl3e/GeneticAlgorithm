@@ -29,21 +29,12 @@ public class Specimen {
         this.specimenScore=score;
     }
 
-//    private void InitializeSpecimenBody(int[] array){
-//        //TODO: Maybe add flag if suffle or not.
-//        //TODO: Create other shuffle method?
-//        List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
-//        Collections.shuffle(list);
-//        this.specimenBody=Arrays.copyOfRange(list.stream().mapToInt(i->i).toArray(),0,this.specimenBody.length);
-//    }
-
     private void InitializeSpecimenBody(int[] array){
         this.specimenBody=Arrays.copyOfRange(Utils.shuffleArray(array),0,specimenBody.length);
     }
 
     public void setSpecimenBody(int[] array) {
         this.specimenBody=array;
-//        this.calculateSpecimenScore();
     }
 
     public int getSpecimenScore() {

@@ -1,88 +1,88 @@
 package crosses;
 
-import algorithm.Population;
 import algorithm.Specimen;
 import myUtils.Utils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class PMX {
 
-    public static Population crossByPMX(Population population,int crossProbability){
+    public static ArrayList<Specimen> crossPair(Specimen firstSpecimen, Specimen secondSpecimen) {
 
-        ArrayList<Specimen> newPopulation=new ArrayList<>();
+        int specimensLenght=firstSpecimen.getSpecimenLength();
 
-        for (int i = 0; i <population.getPopulationSize() ; i+=2) {
-            int random= Utils.getRandomNumberExclusive(1001);
+        int[] firstChild = new int[specimensLenght];
+        int[] secondChild = new int[specimensLenght];
 
-            if (random <= crossProbability){
-                ArrayList<Specimen> crossedSpecimen=crossPair(population.getSpecimen(i),population.getSpecimen(i+1));
-                newPopulation.addAll(crossedSpecimen);
-            }else{
-                newPopulation.add(population.getSpecimen(i));
-                newPopulation.add(population.getSpecimen(i+1));
-            }
+        for (int i = 0; i < specimensLenght; i++)
+        {
+            firstChild[i] = -1;
+            secondChild[i] = -1;
         }
-        return new Population(newPopulation);
-    }
 
-
-    private static ArrayList<Specimen> crossPair(Specimen specimen, Specimen specimen1) {
-
-        int pairLength=specimen.getSpecimenLength();
-
-        int[] children1 = new int[pairLength];
-        int[] children2 = new int[pairLength];
-
-        int firstIntersectionPoint = Utils.getRandomNumberExclusive(0,pairLength);
-        int secondIntersectionPoint = Utils.getRandomNumberExclusive(firstIntersectionPoint,pairLength);
-//        System.out.println("Punkty przeciecia " + firstIntersectionPoint +" " +secondIntersectionPoint);
+        int firstIntersectionPoint = Utils.getRandomNumberExclusive(0,specimensLenght-1);
+        int secondIntersectionPoint = Utils.getRandomNumberExclusive(firstIntersectionPoint+1,specimensLenght);
 
         for (int i = firstIntersectionPoint; i <= secondIntersectionPoint; i++)
         {
-            children1[i] = specimen.getSpecimenBody()[i];
-            children2[i] = specimen1.getSpecimenBody()[i];
+            firstChild[i] = secondSpecimen.getSpecimenBody()[i];
+            secondChild[i] = firstSpecimen.getSpecimenBody()[i];
         }
 
-        // wymiana genów (gen = wszystko poza środkowym przedziałem)
-        // true = wymiana od 0 do początku przedziału
-        // false = wymiana od końca przedziału do końca wiersza
+        firstChild = exchangeGenes(firstSpecimen.getSpecimenBody(), firstChild, firstIntersectionPoint, secondIntersectionPoint, true);
+        firstChild = exchangeGenes(firstSpecimen.getSpecimenBody(), firstChild, firstIntersectionPoint, secondIntersectionPoint, false);
+        secondChild = exchangeGenes(secondSpecimen.getSpecimenBody(), secondChild, firstIntersectionPoint, secondIntersectionPoint, true);
+        secondChild = exchangeGenes(secondSpecimen.getSpecimenBody(), secondChild, firstIntersectionPoint, secondIntersectionPoint, false);
 
-        children1 = wymienGeny(specimen.getSpecimenBody(), children1, firstIntersectionPoint, secondIntersectionPoint, true);
-        children1 = wymienGeny(specimen.getSpecimenBody(), children1, firstIntersectionPoint, secondIntersectionPoint, false);
-        children2 = wymienGeny(specimen1.getSpecimenBody(), children2, firstIntersectionPoint, secondIntersectionPoint, true);
-        children2 = wymienGeny(specimen1.getSpecimenBody(), children2, firstIntersectionPoint, secondIntersectionPoint, false);
 
-        Specimen newSpecimen1= new Specimen();
-        Specimen newSpecimen2 = new Specimen();
+        Specimen newSpec1=new Specimen();
+        Specimen newSpec2=new Specimen();
+        newSpec1.setSpecimenBody(firstChild);
+        newSpec2.setSpecimenBody(secondChild);
 
-        newSpecimen1.setSpecimenBody(children1);
-        newSpecimen2.setSpecimenBody(children2);
-        return new ArrayList<>(){{add(newSpecimen1);add(newSpecimen2);}};
+        return new ArrayList<>(){{add(newSpec1);add(newSpec2);}};
     }
 
-    //TODO: Refactor->Exclude methods
-    private static int[] wymienGeny(int[] rodzic, int[] potomek, int ppp, int dpp, boolean fromBegining)
+    private static int[] exchangeGenes(int[] specimen, int[] child, int firstIntersectionPoint, int secondIntersectionPoint, boolean fromBeginning)
     {
-        int _od = 0;
-        int _do = ppp;
+        int from = 0;
+        int to = firstIntersectionPoint;
 
-        if (!fromBegining)
+        if (!fromBeginning)
         {
-            _od = dpp + 1;
-            _do = potomek.length;
+            from = secondIntersectionPoint+1;
+            to = child.length;
         }
 
-        for (int i = _od; i < _do; i++)
+        for (int i = from; i < to; i++)
         {
-            int gen = rodzic[i];
-            while (Utils.arrayContains(potomek,gen)) //TODO: Instead of while we should use if?
+            int gen = specimen[i];
+            while (contains(child,gen))
             {
-                gen = rodzic[Arrays.asList(potomek).indexOf(gen)];
+                gen = specimen[getArrayIndex(child,gen)];
             }
-            potomek[i] = gen;
+            child[i] = gen;
         }
-        return potomek;
+        return child;
+    }
+
+    public static int getArrayIndex(int[] arr,int value) {
+        for(int i=0;i<arr.length;i++){
+
+            if(arr[i]==value){
+               return i;
+            }
+        }
+        return -1;
+    }
+
+    public static boolean contains(int[] arr,int value) {
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==value){
+                return true;
+            }
+        }
+        return false;
     }
 }
