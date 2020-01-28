@@ -19,8 +19,8 @@ public class Crosser {
                 ArrayList<Specimen> crossedSpecimens=new ArrayList<>();
                 if(type==OX.class){
                     crossedSpecimens=OX.crossPair(population.getSpecimen(i),population.getSpecimen(i+1));
-                }else if (type==PMX.class){
-                    crossedSpecimens=PMX.crossPair(population.getSpecimen(i),population.getSpecimen(i+1));
+                }else if (type==PMX2.class){
+                    crossedSpecimens=PMX2.crossPair(population.getSpecimen(i),population.getSpecimen(i+1));
                 }
                 newPopulation.addAll(crossedSpecimens);
             }else{

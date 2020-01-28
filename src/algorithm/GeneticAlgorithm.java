@@ -2,6 +2,7 @@ package algorithm;
 
 import crosses.Crosser;
 import crosses.PMX;
+import crosses.PMX2;
 import mutators.Mutator;
 import myUtils.Utils;
 import selections.Roulette;
@@ -16,8 +17,8 @@ import java.util.List;
 
 public class GeneticAlgorithm {
 
-//    static String pathToFile= "src/pr1002.txt";            //populacja 100, pmx 45%, mutacja 25%, tournament size 10
-    static String pathToFile= "src/berlin52.txt";
+    static String pathToFile= "src/pr1002.txt";            //populacja 100, pmx 45%, mutacja 25%, tournament size 10
+//    static String pathToFile= "src/berlin52.txt";
     static int numberOfCities;
     static int [][] distances;
     static int [] citiesIndex;
@@ -33,19 +34,19 @@ public class GeneticAlgorithm {
         theBestSpecimen=population.getTheBestSpecimen();
 
         for (int i = 0; i <100000 ; i++) {
-
             var selected=tournament.preparePopulation(population);
 //            var selected=roulette.preparePopulation(population);
-            var crossedPop= Crosser.crossPopulation(selected,950, PMX.class); //920 berling // 1002-450
 
+            var crossedPop= Crosser.crossPopulation(selected,450, PMX2.class); //920 berling // 1002-450
             population=crossedPop;
 
            // Mutator.mutate(population,135); //135 berlin
-            Mutator.mutateByInversion(population,500); //250-1002
+            Mutator.mutateByInversion(population,250); //250-1002
             if(population.getTheBestSpecimen().getSpecimenScore()<theBestSpecimen.getSpecimenScore()){
                 theBestSpecimen=population.getTheBestSpecimen();
                 System.out.println("Iteracja:" +i +" "+theBestSpecimen.getSpecimenScore());
             }
+
         }
         Utils.printOneDimensionalArray(theBestSpecimen.getSpecimenBody());
 

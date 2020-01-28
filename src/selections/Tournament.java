@@ -10,7 +10,7 @@ import java.util.Comparator;
 
 public class Tournament implements Selection {
 
-    static double selectivePressure=0.03;
+    static double selectivePressure=0.05;
     //TODO: This is not selective pressure?
 //    static double selectivePressure=0.09; //0.09 //1002-0.05
 
