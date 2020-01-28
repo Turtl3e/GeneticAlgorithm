@@ -1,1 +1,1 @@
-# GeneticAlgorithm
+# algorithm.GeneticAlgorithm
